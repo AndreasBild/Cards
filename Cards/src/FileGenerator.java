@@ -8,9 +8,12 @@ import java.util.List;
 public class FileGenerator {
 
 
-    //private static final String pathSource = "E:\\Backup\\Data\\Java\\HelloWorld\\content\\";
-    private static final String pathSource = "./content/";
-    private static final String pathOutput = "./output/";
+    //private static final String pathSource = "./content/";
+    //private static final String pathOutput = "./output/";
+
+    private static final String pathSource = "./Cards/content/";
+    private static final String pathOutput = "./Cards/output/";
+
 
 
     private static final String generatedFileLocation = pathOutput + "result.html";
@@ -29,8 +32,7 @@ public class FileGenerator {
 
     public static void main(String[] args) throws IOException {
 
-        //  File directory = new File("./");
-        // System.out.println(directory.getAbsolutePath());
+
 
         // create file or use existing file in filesystem
         createTargetFile();
@@ -50,7 +52,8 @@ public class FileGenerator {
     }
 
     private static String[] getFileNamesfromDirectory() {
-
+        //File directory = new File("./");
+        //System.out.println(directory.getAbsolutePath());
         final File folder = new File(pathSource);
         final File[] listOfFilesInDirectory = folder.listFiles();
 
@@ -74,7 +77,7 @@ public class FileGenerator {
 
 
     /**
-     * Method to create ar re use a file under the given target location (path in the files ystem)
+     * Method to create ar re use a file under the given target location (path in the files System)
      *
      * @throws IOException Java IO Exception
      */
