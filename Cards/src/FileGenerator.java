@@ -25,7 +25,7 @@ public class FileGenerator {
                     "</head><body>\n" +
                     "<h1>List of Trading Cards</h1>\n";
 
-    private static final String tableHead = "<table id=\"tradingCards\">";
+    private static final String tableHead = "<table>";
     private static final String templateEnd = "List Created: " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date()) + "</body></html>";
 
     private static final String[] listOfFiles = getFileNamesfromDirectory();
