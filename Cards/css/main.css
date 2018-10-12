@@ -1,0 +1,30 @@
+
+body {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#tradingCards {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tradingCards td, #tradingCards th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tradingCards tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tradingCards tr:hover {
+    background-color: #ddd;
+}
+
+#tradingCards th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #3264af;
+    color: white;
+}
