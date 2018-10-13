@@ -28,7 +28,7 @@ public class FileGenerator {
     private static final String tableHead = "<table>";
     private static final String templateEnd = "List Created: " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date()) + "</body></html>";
 
-    private static final String[] listOfFiles = getFileNamesfromDirectory();
+    private static final String[] listOfFiles = getFileNamesFromDirectory();
 
     public static void main(String[] args) throws IOException {
 
@@ -47,28 +47,49 @@ public class FileGenerator {
             counterAll = appendFileContent(sourceFile, listOfFile, counterAll);
         }
         addTemplateComponent(templateEnd, true);
-
-
     }
 
-    private static String[] getFileNamesfromDirectory() {
-        //File directory = new File("./");
-        //System.out.println(directory.getAbsolutePath());
+    private static void formatFile( String[] listOfFiles){
+
         final File folder = new File(pathSource);
         final File[] listOfFilesInDirectory = folder.listFiles();
 
 
-        final List<String> result = new ArrayList<String>() {
+        final List<String> result = new ArrayList<>() {
         };
 
         assert listOfFilesInDirectory != null;
         Arrays.sort(listOfFilesInDirectory);
         for (File aListOfFilesInDirectory : listOfFilesInDirectory) {
             if (aListOfFilesInDirectory.isFile()) {
-                //System.out.println("Files Names: " + aListOfFilesInDirectory.getName().substring(0,aListOfFilesInDirectory.getName().lastIndexOf('.')));
+                System.out.println("File: " + aListOfFilesInDirectory.getName());
+
+
+            }
+        }
+
+    }
+
+
+
+    private static String[] getFileNamesFromDirectory() {
+        //File directory = new File("./");
+        //System.out.println(directory.getAbsolutePath());
+        final File folder = new File(pathSource);
+        final File[] listOfFilesInDirectory = folder.listFiles();
+
+
+        final List<String> result = new ArrayList<>() {
+        };
+
+        assert listOfFilesInDirectory != null;
+        Arrays.sort(listOfFilesInDirectory);
+        for (File aListOfFilesInDirectory : listOfFilesInDirectory) {
+            if (aListOfFilesInDirectory.isFile()) {
+                System.out.println("File: " + aListOfFilesInDirectory.getName().substring(0,aListOfFilesInDirectory.getName().lastIndexOf('.')));
                 result.add(aListOfFilesInDirectory.getName().substring(0, aListOfFilesInDirectory.getName().lastIndexOf('.')));
             } else if (aListOfFilesInDirectory.isDirectory()) {
-               // System.out.println("Directory: " + aListOfFilesInDirectory.getName());
+               System.out.println("Directory: " + aListOfFilesInDirectory.getName());
             }
         }
 
