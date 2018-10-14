@@ -55,7 +55,7 @@ public class FileGenerator {
         final File[] listOfFilesInDirectory = folder.listFiles();
 
 
-        final List<String> result = new ArrayList<>() {
+        final List<String> result = new ArrayList<String>() {
         };
 
         assert listOfFilesInDirectory != null;
@@ -79,7 +79,7 @@ public class FileGenerator {
         final File[] listOfFilesInDirectory = folder.listFiles();
 
 
-        final List<String> result = new ArrayList<>() {
+        final List<String> result = new ArrayList<String>() {
         };
 
         assert listOfFilesInDirectory != null;
