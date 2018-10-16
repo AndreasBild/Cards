@@ -15,7 +15,6 @@ public class FileGenerator {
     private static final String pathOutput = "./Cards/output/";
 
 
-
     private static final String generatedFileLocation = pathOutput + "result.html";
     private static final String templateBegin =
             "<!DOCTYPE html>\n" +
@@ -32,10 +31,10 @@ public class FileGenerator {
 
     public static void main(String[] args) throws IOException {
 
-
+        //formatFile();
 
         // create file or use existing file in filesystem
-        createTargetFile();
+        createTargetFile(generatedFileLocation);
         // add document header as first part of the file content
         addTemplateComponent(templateBegin, false);
 
@@ -49,27 +48,29 @@ public class FileGenerator {
         addTemplateComponent(templateEnd, true);
     }
 
-    private static void formatFile( String[] listOfFiles){
+    private static void formatFile() {
 
         final File folder = new File(pathSource);
         final File[] listOfFilesInDirectory = folder.listFiles();
-
-
-        final List<String> result = new ArrayList<>() {
-        };
 
         assert listOfFilesInDirectory != null;
         Arrays.sort(listOfFilesInDirectory);
         for (File aListOfFilesInDirectory : listOfFilesInDirectory) {
             if (aListOfFilesInDirectory.isFile()) {
-                System.out.println("File: " + aListOfFilesInDirectory.getName());
+                final String fileName = aListOfFilesInDirectory.getName();
+                System.out.println("FileName: " + fileName);
+                try {
+                    createTargetFile(pathOutput + fileName);
+                    formatFileContent(pathSource + fileName, pathOutput + fileName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
             }
         }
 
     }
-
 
 
     private static String[] getFileNamesFromDirectory() {
@@ -86,10 +87,10 @@ public class FileGenerator {
         Arrays.sort(listOfFilesInDirectory);
         for (File aListOfFilesInDirectory : listOfFilesInDirectory) {
             if (aListOfFilesInDirectory.isFile()) {
-                System.out.println("File: " + aListOfFilesInDirectory.getName().substring(0,aListOfFilesInDirectory.getName().lastIndexOf('.')));
+                System.out.println("File: " + aListOfFilesInDirectory.getName().substring(0, aListOfFilesInDirectory.getName().lastIndexOf('.')));
                 result.add(aListOfFilesInDirectory.getName().substring(0, aListOfFilesInDirectory.getName().lastIndexOf('.')));
             } else if (aListOfFilesInDirectory.isDirectory()) {
-               System.out.println("Directory: " + aListOfFilesInDirectory.getName());
+                System.out.println("Directory: " + aListOfFilesInDirectory.getName());
             }
         }
 
@@ -102,13 +103,13 @@ public class FileGenerator {
      *
      * @throws IOException Java IO Exception
      */
-    private static void createTargetFile() throws IOException {
-        final File myFile = new File(FileGenerator.generatedFileLocation);
+    private static void createTargetFile(String fileName) throws IOException {
+        final File myFile = new File(fileName);
 
         if (myFile.createNewFile()) {
-            System.out.println("A new File under: " + FileGenerator.generatedFileLocation + " was created ");
+            System.out.println("A new File under: " + fileName + " was created ");
         } else {
-            System.out.println("An existing File under: " + FileGenerator.generatedFileLocation + " was replaced ");
+            System.out.println("An existing File under: " + fileName + " was replaced ");
         }
     }
 
@@ -165,6 +166,52 @@ public class FileGenerator {
             out.append(result.append('\n'));
             out.flush();
             return counterAll;
+
+        }
+    }
+
+    private static void formatFileContent(final String source, String target) throws IOException {
+        final StringBuffer result = new StringBuffer();
+
+
+        try (BufferedReader inputStream = new BufferedReader(new FileReader(source)); PrintWriter outputStream = new PrintWriter(new FileWriter(target, false))) {
+
+
+            final BufferedWriter out = new BufferedWriter(outputStream);
+
+
+            String line;
+            int counter = -1; // needs to be -1 because of the table header, we count only the content rows
+
+            while ((line = inputStream.readLine()) != null ) {
+               if(line.isEmpty()){
+                   // do nothing
+               }else if(line.contains("<table>")|| line.contains("</table>") || line.contains("<td>")||line.contains("</td>")||line.contains("<tr>")|| line.contains("<th>") ) {
+                   result.append(line.trim()).append('\n');
+               }else if(line.contains("</tr>")) {
+                   result.append(line.trim()).append('\n');
+                   ++counter;
+               }else{
+                   result.append(line.trim());
+               }
+
+            }
+
+
+            System.out.println(result);
+            final int offset;
+
+            if (result.lastIndexOf("]</h2>")!=-1){
+               offset=result.lastIndexOf("]</h2>");
+               result.replace(offset, offset + 6, "]</h2>"+"\n");
+            }else {
+
+            offset = result.lastIndexOf("</h2>");
+            result.replace(offset, offset + 5, " [Total: " + counter + "]</h2>"+"\n");
+            }
+            out.append(result.append('\n'));
+            out.flush();
+
 
         }
     }
