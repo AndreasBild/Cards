@@ -72,7 +72,10 @@ public class FileGenerator {
 
     }
 
-
+    /**
+     *
+     * @return
+     */
     private static String[] getFileNamesFromDirectory() {
         //File directory = new File("./");
         //System.out.println(directory.getAbsolutePath());
