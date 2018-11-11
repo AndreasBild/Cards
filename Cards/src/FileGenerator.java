@@ -83,7 +83,7 @@ public class FileGenerator {
         final File[] listOfFilesInDirectory = folder.listFiles();
 
 
-        final List<String> result = new ArrayList<String>() {
+        final List<String> result = new ArrayList<>() {
         };
 
         assert listOfFilesInDirectory != null;
