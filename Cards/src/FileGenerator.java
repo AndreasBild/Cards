@@ -74,11 +74,11 @@ public class FileGenerator {
 
     /**
      *
-     * @return
+     * @return array of strings containing the names of files/subdirectories in the given base path.
      */
     private static String[] getFileNamesFromDirectory() {
-        //File directory = new File("./");
-        //System.out.println(directory.getAbsolutePath());
+        File directory = new File("./");
+        System.out.println("################ AbsolutePath: " +directory.getAbsolutePath());
         final File folder = new File(pathSource);
         final File[] listOfFilesInDirectory = folder.listFiles();
 
@@ -90,10 +90,10 @@ public class FileGenerator {
         Arrays.sort(listOfFilesInDirectory);
         for (File aListOfFilesInDirectory : listOfFilesInDirectory) {
             if (aListOfFilesInDirectory.isFile()) {
-                System.out.println("File: " + aListOfFilesInDirectory.getName().substring(0, aListOfFilesInDirectory.getName().lastIndexOf('.')));
+                System.out.println("File in Directory : " + aListOfFilesInDirectory.getName().substring(0, aListOfFilesInDirectory.getName().lastIndexOf('.')));
                 result.add(aListOfFilesInDirectory.getName().substring(0, aListOfFilesInDirectory.getName().lastIndexOf('.')));
             } else if (aListOfFilesInDirectory.isDirectory()) {
-                System.out.println("Directory: " + aListOfFilesInDirectory.getName());
+                System.out.println("Subdirectory in Directory: " + aListOfFilesInDirectory.getName());
             }
         }
 
@@ -188,7 +188,7 @@ public class FileGenerator {
 
             while ((line = inputStream.readLine()) != null ) {
                if(line.isEmpty()){
-                   // do nothing
+                  return;
                }else if(line.contains("<table>")|| line.contains("</table>") || line.contains("<td>")||line.contains("</td>")||line.contains("<tr>")|| line.contains("<th>") ) {
                    result.append(line.trim()).append('\n');
                }else if(line.contains("</tr>")) {
