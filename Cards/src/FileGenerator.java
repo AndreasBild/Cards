@@ -20,6 +20,8 @@ public class FileGenerator {
             "<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
                     "<head><meta charset=\"UTF-8\"><title>Juwan Howard Collection </title>\n" +
+                    "      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                    "      <meta name=\"Description\" content=\"List of all Basketball Trading Cards of former NBA Player Juwan Howard.Includes Autographs and serial numbered cards.\">\n" +
                     "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/main.css\"/>\n" +
                     "</head><body>\n" +
                     "<h1>List of Trading Cards</h1>\n";
