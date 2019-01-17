@@ -24,12 +24,12 @@ public class FileGenerator {
                     "      <meta name=\"Description\" content=\"List of all Basketball Trading Cards of former NBA Player Juwan Howard.Includes Autographs and serial numbered cards.\">\n" +
                     "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/main.css\"/>\n" +
                     "</head><body>\n" +
-                    "<h1>List of Trading Cards</h1>\n";
+                    "<h1><a name=\"top\">List of Trading Cards</a></h1>\n";
 
     private static final String tableHead = "<table>";
     private static final String templateEnd = "List Created: " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date()) + "</body></html>";
 
-    private static final String[] listOfFiles = getFileNamesFromDirectory();
+    private static final String[] nameOfInputFile = getFileNamesFromDirectory();
 
     public static void main(String[] args) throws IOException {
 
@@ -41,15 +41,31 @@ public class FileGenerator {
         addTemplateComponent(templateBegin, false);
 
 
-        int counterAll = 0;
-        for (final String listOfFile : listOfFiles) {
 
-            final String sourceFile = pathSource + listOfFile + ".html";
-            counterAll = appendFileContent(sourceFile, listOfFile, counterAll);
+        int counterAll = 0;
+        for (final String fileName : nameOfInputFile) {
+
+            final String sourceFile = pathSource + fileName + ".html";
+            counterAll = appendFileContent(sourceFile, fileName, counterAll);
+
         }
+
         addTemplateComponent(templateEnd, true);
     }
 
+    private static String createAnchorList() {
+
+        StringBuilder internalAnchorList = new StringBuilder();
+
+        for (String fileName : nameOfInputFile) {
+            internalAnchorList.append(" | <a href=").append('#').append(fileName).append(">").append(fileName).append("</a> ");
+        }
+        internalAnchorList.append(" |");
+
+
+        return internalAnchorList.toString();
+
+    }
     private static void formatFile() {
 
         final File folder = new File(pathSource);
@@ -129,13 +145,17 @@ public class FileGenerator {
         PrintWriter printWriter = new PrintWriter(new java.io.FileWriter(FileGenerator.generatedFileLocation, appendAtTheEnd));
 
         final BufferedWriter out = new BufferedWriter(printWriter);
+
         out.append(templateBegin);
+        out.append(createAnchorList());
         out.flush();
         out.close();
     }
 
     private static int appendFileContent(final String source, final String name, int counterIn) throws IOException {
-        final StringBuffer result = new StringBuffer("<h2>").append(name).append("</h2>").append('\n').append(tableHead);
+        final String anchorName="<a name="+name+">"+name+"</a>";
+        final StringBuffer result = new StringBuffer("<h2>").append(anchorName).append("</h2>").append('\n').append(tableHead);
+
 
 
         try (BufferedReader inputStream = new BufferedReader(new FileReader(source)); PrintWriter outputStream = new PrintWriter(new FileWriter(FileGenerator.generatedFileLocation, true))) {
@@ -165,7 +185,7 @@ public class FileGenerator {
 
             final int offset = result.lastIndexOf("</h2>");
 
-            result.replace(offset, offset + 5, " [This Season: " + counter + " | Total: " + counterAll + "]</h2>");
+            result.replace(offset, offset + 5, " [This Season: " + counter + " | Total: " + counterAll + "]</h2><a href=\"#top\">top</a>");
 
 
             out.append(result.append('\n'));
