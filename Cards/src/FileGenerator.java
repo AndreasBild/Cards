@@ -147,7 +147,7 @@ public class FileGenerator {
         final BufferedWriter out = new BufferedWriter(printWriter);
 
         out.append(templateBegin);
-        out.append(createAnchorList());
+       if (!appendAtTheEnd) out.append(createAnchorList());
         out.flush();
         out.close();
     }
