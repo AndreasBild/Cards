@@ -8,14 +8,14 @@ import java.util.List;
 public class FileGenerator {
 
 
-    //private static final String pathSource = "./content/";
-    //private static final String pathOutput = "./output/";
 
+// constants: basepaths for input and output
     private static final String pathSource = "./Cards/content/";
     private static final String pathOutput = "./Cards/output/";
-
-
     private static final String generatedFileLocation = pathOutput + "result.html";
+    private static final String[] nameOfInputFile = getFileNamesFromDirectory();
+
+// constants for static page parts
     private static final String templateBegin =
             "<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
@@ -29,35 +29,35 @@ public class FileGenerator {
     private static final String tableHead = "<table>";
     private static final String templateEnd = "List Created: " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date()) + "</body></html>";
 
-    private static final String[] nameOfInputFile = getFileNamesFromDirectory();
 
     public static void main(String[] args) throws IOException {
 
         //formatFile();
 
-        // create file or use existing file in filesystem
+        // create a new file or use existing file with the same name
         createTargetFile(generatedFileLocation);
         // add document header as first part of the file content
         addTemplateComponent(templateBegin, false);
 
-
-
         int counterAll = 0;
         for (final String fileName : nameOfInputFile) {
-
+            // iterate over all file names in the given directory
             final String sourceFile = pathSource + fileName + ".html";
             counterAll = appendFileContent(sourceFile, fileName, counterAll);
 
         }
-
         addTemplateComponent(templateEnd, true);
     }
 
+    /**
+     * creates an internal anchor in the
+     * @return String a anchor element with all internal anchors
+     */
     private static String createAnchorList() {
 
-        StringBuilder internalAnchorList = new StringBuilder();
+        final StringBuilder internalAnchorList = new StringBuilder();
 
-        for (String fileName : nameOfInputFile) {
+        for (final String fileName : nameOfInputFile) {
             internalAnchorList.append(" | <a href=").append('#').append(fileName).append(">").append(fileName).append("</a> ");
         }
         internalAnchorList.append(" |");
@@ -66,6 +66,11 @@ public class FileGenerator {
         return internalAnchorList.toString();
 
     }
+
+    /**
+     * formats a list of files in a given directory by removing whitespaces.
+     * Writes the formated files in a separate directory
+     */
     private static void formatFile() {
 
         final File folder = new File(pathSource);
