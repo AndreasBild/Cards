@@ -32,10 +32,10 @@ public class FileGenerator {
                     "<meta name=\"google-site-verification\" content=\"Ev1ZxTPJs2GMFNQ6FyItlCYAKUWscL3jDFS_mVXH6IQ\" />" +
                     "<meta charset=\"UTF-8\"><title>Juwan Howard Collection </title>\n" +
                     "      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                    "      <meta name=\"Description\" content=\"List of all Basketball Trading Cards of former NBA Player Juwan Howard.Includes Autographs and serial numbered cards.\">\n" +
+                    "      <meta name=\"Description\" content=\"List of all Basketball Trading Cards of former NBA Player Juwan Howard.This collection includes on card Autographs, Game used patches and serial numbered trading cards from 3 decades.\">\n" +
                     "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/main.css\"/>\n" +
                     "</head><body>\n" +
-                    "<h1><a name=\"top\">List of Trading Cards</a></h1>\n";
+                    "<h1><a name=\"top\">List of Juwan Howard Basketball Trading Cards</a></h1>\n";
 
     private static final String tableHead = "<table>";
     private static final String templateEnd = "List Created: " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date()) + "</body></html>";
