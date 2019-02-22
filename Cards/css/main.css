@@ -38,7 +38,13 @@ img:hover {
     width: 70px;
     margin: 0 auto;
 }
+.zoomlandscape {
+    transition: transform .2s; /* Animation */
+    width: 110px;
+    margin: 0 auto;
+}
 
-.zoom:hover {
+.zoom:hover,
+.zoomlandscape:hover {
     transform: scale(2.5); /* (250% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
