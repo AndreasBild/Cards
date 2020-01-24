@@ -34,6 +34,7 @@ public class FileGenerator {
                     "      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
                     "      <meta name=\"Description\" content=\"List of all Basketball Trading Cards of former NBA Player Juwan Howard.This collection includes on card Autographs, Game used patches and serial numbered trading cards from 3 decades.\">\n" +
                     "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/main.css\"/>\n" +
+                    " <title>List of Juwan Howard Basketball Trading Cards</title>" +
                     "</head><body>\n" +
                     "<h1><a name=\"top\">List of Juwan Howard Basketball Trading Cards</a></h1>\n";
 
@@ -169,7 +170,7 @@ public class FileGenerator {
     }
 
     private static int appendFileContent(final String source, final String name, int counterIn) throws IOException {
-        final String anchorName="<a name="+name+">"+name+"</a>";
+        final String anchorName="<a id="+name+">"+name+"</a>";
         final StringBuffer result = new StringBuffer("<h2>").append(anchorName).append("</h2>").append('\n').append(tableHead);
 
 
