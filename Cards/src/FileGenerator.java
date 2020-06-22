@@ -36,7 +36,7 @@ public class FileGenerator {
                     "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/main.css\"/>\n" +
                     " <title>List of Juwan Howard Basketball Trading Cards</title>" +
                     "</head><body>\n" +
-                    "<h1><a name=\"top\">List of Juwan Howard Basketball Trading Cards</a></h1>\n";
+                    "<h1><a id=\"top\">List of Juwan Howard Basketball Trading Cards</a></h1>\n";
 
     private static final String tableHead = "<table>";
     private static final String templateEnd = "List Created: " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date()) + "</body></html>";
