@@ -30,13 +30,13 @@ public class FileGenerator {
                     "  gtag('config', 'UA-133295589-1');\n" +
                     "</script>\n" +
                     "<meta name=\"google-site-verification\" content=\"Ev1ZxTPJs2GMFNQ6FyItlCYAKUWscL3jDFS_mVXH6IQ\" />" +
-                    "<meta charset=\"UTF-8\"><title>Juwan Howard Collection </title>\n" +
+                    "<meta charset=\"UTF-8\"><title>Juwan Howard Basketball Trading Card Collection</title>\n" +
                     "      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                    "      <meta name=\"title\" content=\"List of Juwan Howard Basketball Trading Cards\">\n" +
                     "      <meta name=\"Description\" content=\"List of all Basketball Trading Cards of former NBA Player Juwan Howard.This collection includes on card Autographs, Game used patches and serial numbered trading cards from 3 decades.\">\n" +
-                    "    <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/main.css\"/>\n" +
-                    " <title>List of Juwan Howard Basketball Trading Cards</title>" +
+                    "      <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/main.css\"/>\n" +
                     "</head><body>\n" +
-                    "<h1><a id=\"top\">List of Juwan Howard Basketball Trading Cards</a></h1>\n";
+                    "<h1><a id=\"top\" title='Top of the list'>List of Juwan Howard Basketball Trading Cards</a></h1>\n";
 
     private static final String tableHead = "<table>";
     private static final String templateEnd = "List Created: " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date()) + "</body></html>";
@@ -70,7 +70,7 @@ public class FileGenerator {
         final StringBuilder internalAnchorList = new StringBuilder();
 
         for (final String fileName : nameOfInputFile) {
-            internalAnchorList.append(" | <a href=").append('#').append(fileName).append(">").append(fileName).append("</a> ");
+            internalAnchorList.append(" | <a href=").append('#').append(fileName).append(" title='Juwan Howard Trading Cards from Season: ").append(fileName).append("'>").append(fileName).append("</a> ");
         }
         internalAnchorList.append(" |");
 
@@ -170,7 +170,7 @@ public class FileGenerator {
     }
 
     private static int appendFileContent(final String source, final String name, int counterIn) throws IOException {
-        final String anchorName="<a id="+name+">"+name+"</a>";
+        final String anchorName="<a title='Juwan Howard Trading Cards for Season "+name+"' id="+name+">"+name+"</a>";
         final StringBuffer result = new StringBuffer("<h2>").append(anchorName).append("</h2>").append('\n').append(tableHead);
 
 
@@ -202,7 +202,7 @@ public class FileGenerator {
 
             final int offset = result.lastIndexOf("</h2>");
 
-            result.replace(offset, offset + 5, " [This Season: " + counter + " | Total: " + counterAll + "]</h2><a href=\"#top\">top</a>");
+            result.replace(offset, offset + 5, " [This Season: " + counter + " | Total: " + counterAll + "]</h2><a href=\"#top\" title='Back to the top of the list'>top</a>");
 
 
             out.append(result.append('\n'));
