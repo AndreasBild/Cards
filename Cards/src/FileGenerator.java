@@ -20,7 +20,7 @@ public class FileGenerator {
             "<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
                     "<head>" +
-                    "<!-- Global site tag (gtag.js) - Google Analytics -->\n" +
+                /*    "<!-- Global site tag (gtag.js) - Google Analytics -->\n" +
                     "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-133295589-1\"></script>\n" +
                     "<script>\n" +
                     "  window.dataLayer = window.dataLayer || [];\n" +
@@ -29,6 +29,8 @@ public class FileGenerator {
                     "\n" +
                     "  gtag('config', 'UA-133295589-1');\n" +
                     "</script>\n" +
+
+                 */
                     "<meta name=\"google-site-verification\" content=\"Ev1ZxTPJs2GMFNQ6FyItlCYAKUWscL3jDFS_mVXH6IQ\" />" +
                     "<meta charset=\"UTF-8\"><title>Juwan Howard Basketball Trading Card Collection</title>\n" +
                     "      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
