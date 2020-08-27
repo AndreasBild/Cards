@@ -12,7 +12,7 @@ public class FileGenerator {
 // constants: basepaths for input and output
     private static final String pathSource = "./Cards/content/";
     private static final String pathOutput = "./Cards/output/";
-    private static final String generatedFileLocation = pathOutput + "result.html";
+    private static final String generatedFileLocation = pathOutput + "index.html";
     private static final String[] nameOfInputFile = getFileNamesFromDirectory();
 
 // constants for static page parts
