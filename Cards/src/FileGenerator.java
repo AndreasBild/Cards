@@ -9,7 +9,7 @@ public class FileGenerator {
 
 
 
-// constants: basepaths for input and output
+// constants: base paths for input and output
     private static final String pathSource = "./Cards/content/";
     private static final String pathOutput = "./Cards/output/";
     private static final String generatedFileLocation = pathOutput + "index.html";
@@ -83,7 +83,7 @@ public class FileGenerator {
 
     /**
      * formats a list of files in a given directory by removing whitespaces.
-     * Writes the formated files in a separate directory
+     * Writes the formatted files in a separate directory
      */
     private static void formatFile() {
 
