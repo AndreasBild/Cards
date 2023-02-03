@@ -65,7 +65,7 @@ public class FileGenerator {
 
     /**
      * creates an internal anchor in the
-     * @return String a anchor element with all internal anchors
+     * @return String an anchor element with all internal anchors
      */
     private static String createAnchorList() {
 
@@ -139,7 +139,7 @@ public class FileGenerator {
 
 
     /**
-     * Method to create ar re use a file under the given target location (path in the files System)
+     * Method to create ar re-use a file under the given target location (path in the files System)
      *
      * @throws IOException Java IO Exception
      */
@@ -154,7 +154,7 @@ public class FileGenerator {
     }
 
     /**
-     * Method for adding content to a given file. First a header with doctype definition is added. In a later step the rest of the content is appended at he end
+     * Method for adding content to a given file. First a header with doctype definition is added. In a later step the rest of the content is appended at the end
      *
      * @param templateBegin  String, that contains the basic file header template
      * @param appendAtTheEnd boolean, that indicated if the provided content shall be added at the end or the beginning of the file
