@@ -37,6 +37,7 @@ public class FileGenerator {
                     "      <meta name=\"title\" content=\"List of Juwan Howard Basketball Trading Cards\">\n" +
                     "      <meta name=\"Description\" content=\"List of all Basketball Trading Cards of former NBA Player Juwan Howard.This collection includes on card Autographs, Game used patches and serial numbered trading cards from 3 decades.\">\n" +
                     "      <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/main.css\"/>\n" +
+                    "      <meta name=\"robots\" content=\"index,follow\">\n" +
                     "</head><body>\n" +
                     "<h1><a id=\"top\" title='Top of the list'>List of Juwan Howard Basketball Trading Cards</a></h1>\n";
 
